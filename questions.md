@@ -550,7 +550,7 @@ services:
     image: nginx
     networks:
       - mynetwork
-
+```
 ### 176. How do you configure Docker to run containers with limited resources?
 - **Answer**: You can configure Docker containers with limited resources by using the `--memory` and `--cpus` flags when running the container to set limits on memory and CPU usage.
 
