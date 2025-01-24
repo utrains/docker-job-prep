@@ -174,49 +174,49 @@
 ### 55. What is the Docker command to view the logs of a running container?
 - **Answer**: Use `docker logs container_name` to view the logs of a running or stopped container.
 
-### 50. How do you stop a running Docker container gracefully?
+### 56. How do you stop a running Docker container gracefully?
 - **Answer**: To stop a running container gracefully, use `docker stop container_name`, which sends a SIGTERM signal and waits for the container to stop.
 
-### 51. What is the Docker `--rm` flag used for?
+### 57. What is the Docker `--rm` flag used for?
 - **Answer**: The `--rm` flag automatically removes a container when it exits. It is useful for running one-off containers that you don't need to persist after execution.
 
-### 52. What is the purpose of the `docker-compose.yml` file?
+### 58. What is the purpose of the `docker-compose.yml` file?
 - **Answer**: The `docker-compose.yml` file is used to define multi-container Docker applications. It specifies the services, networks, and volumes for the application.
 
-### 53. How can you update Docker Compose services without downtime?
+### 59. How can you update Docker Compose services without downtime?
 - **Answer**: Docker Compose can update services with zero downtime by using rolling updates. This is achieved by scaling services and upgrading them one by one while maintaining the availability of the others.
 
-### 54. How do you check the version of Docker installed?
+### 60. How do you check the version of Docker installed?
 - **Answer**: You can check the version of Docker installed by running the command `docker --version`.
 
-### 55. What are Docker tags, and why are they important?
+### 61. What are Docker tags, and why are they important?
 - **Answer**: Docker tags are used to version images. They allow you to specify the exact version of an image to pull or run (e.g., `myimage:1.0`).
 
-### 56. What is the use of the `docker stats` command?
+### 62. What is the use of the `docker stats` command?
 - **Answer**: The `docker stats` command provides real-time resource usage statistics (CPU, memory, disk I/O, and network I/O) for running containers.
 
-### 57. What is the difference between `docker volume` and `docker bind mount`?
+### 63. What is the difference between `docker volume` and `docker bind mount`?
 - **Answer**: A Docker volume is managed by Docker and is used for persistent data storage, while a bind mount links a file or directory on the host machine to a container. Volumes are preferred for portability and data integrity.
 
-### 58. How do you configure Docker containers to communicate with each other?
+### 64. How do you configure Docker containers to communicate with each other?
 - **Answer**: Docker containers can communicate through networks. You can create custom networks using the `docker network create` command and connect containers to the network.
 
-### 59. What is a Docker network bridge?
+### 65. What is a Docker network bridge?
 - **Answer**: A bridge network is the default network type in Docker. Containers on the same bridge network can communicate with each other, and the network isolates them from other networks.
 
-### 60. How do you remove a Docker image?
+### 66. How do you remove a Docker image?
 - **Answer**: You can remove a Docker image using the command `docker rmi image_name`, where `image_name` is the name of the image.
 
-### 61. How do you push a Docker image to Docker Hub?
+### 67. How do you push a Docker image to Docker Hub?
 - **Answer**: To push an image to Docker Hub, first tag it with your Docker Hub repository (e.g., `docker tag myimage username/myimage`), then use the command `docker push username/myimage`.
 
-### 62. What are the advantages of Docker over traditional virtualization?
+### 68. What are the advantages of Docker over traditional virtualization?
 - **Answer**: Docker is more lightweight and faster than traditional virtualization because it uses containers that share the host OS kernel, unlike virtual machines that run a full OS.
 
-### 63. What is Docker Swarm mode?
+### 69. What is Docker Swarm mode?
 - **Answer**: Docker Swarm mode is Docker's native clustering and orchestration tool. It enables you to manage a cluster of Docker nodes and deploy services across the cluster.
 
-### 64. How does Docker handle container orchestration?
+### 70. How does Docker handle container orchestration?
 - **Answer**: Docker uses Docker Swarm mode for container orchestration, which provides clustering, load balancing, and service discovery for Docker containers.
 
 ### 65. What is a Docker service in Swarm mode?
