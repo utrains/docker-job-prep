@@ -53,7 +53,7 @@
 - **Answer**: `docker pull` is used to download Docker images from a registry (like Docker Hub).
 
 ### 17. What is Docker networking?
-- **Answer**: Docker networking is the process of connecting containers and allowing them to communicate with each other. Docker provides several network drivers like bridge, host, and overlay.
+- **Answer**: Docker networking is the process of connecting containers and allowing them to communicate with each other. Docker provides several network drivers like bridge, None, host, overlay and more.
 
 ### 18. How do you create a Docker container from an image?
 - **Answer**: Use the `docker run` command. For example: `docker run -d -p 8080:80 myimage` runs a container in detached mode and maps port 80 of the container to port 8080 on the host.
