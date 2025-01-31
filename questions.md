@@ -219,19 +219,19 @@
 ### 70. How does Docker handle container orchestration?
 - **Answer**: Docker uses Docker Swarm mode for container orchestration, which provides clustering, load balancing, and service discovery for Docker containers.
 
-### 65. What is a Docker service in Swarm mode?
+### 71. What is a Docker service in Swarm mode?
 - **Answer**: A Docker service in Swarm mode defines a task that runs on a cluster of nodes. Services are the fundamental unit of scaling and deployment in Docker Swarm.
 
-### 66. How do you perform a rolling update in Docker Swarm?
+### 72. How do you perform a rolling update in Docker Swarm?
 - **Answer**: In Docker Swarm, you can perform rolling updates using the `docker service update` command, which updates the service incrementally without downtime.
 
-### 67. What is the purpose of `docker network` commands?
+### 73. What is the purpose of `docker network` commands?
 - **Answer**: `docker network` commands are used to create, inspect, and manage networks for Docker containers. Networks allow containers to communicate securely and isolate them from each other.
 
-### 68. How do you attach a running container to a network in Docker?
+### 74. How do you attach a running container to a network in Docker?
 - **Answer**: Use the command `docker network connect network_name container_name` to attach a running container to a network.
 
-### 69. How can you persist data in Docker containers?
+### 75. How can you persist data in Docker containers?
 - **Answer**: Data can be persisted in Docker containers using Docker volumes, bind mounts, or tmpfs mounts. Volumes are the preferred method for ensuring data persists after container restarts.
 
 ### 70. How do you manage different environments (e.g., development, staging, production) with Docker?

@@ -9,6 +9,7 @@ To run containers, we'll first need to pull some images.
 ```
 $ docker images
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+
 ```
 
 On a fresh Docker installation, we should have no images. Let's pull one from Dockerhub.
@@ -135,7 +136,8 @@ Let's do a very simple example. Run: docker run ubuntu:16.04 /bin/echo 'Welcome 
 $ docker run ubuntu:16.04 /bin/echo 'Welcome to Docker preparation day !!'
 
 Welcome to Docker preparation day !!
-The /bin/echo command is a really simple application that just prints whatever you give it to the terminal. We passed it 'Welcome to Docker preparation day !! ', so it prints Welcome to Docker preparation day !! to the terminal.
+The /bin/echo command is a really simple application that just prints whatever you give it to the terminal. 
+We passed it 'Welcome to Docker preparation day !! ', so it prints Welcome to Docker preparation day !! to the terminal.
 
 ```
 
@@ -145,6 +147,7 @@ Let's check what containers we have after running this. Run the command: docker 
 
 ```
 $ docker ps
+
 CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
 
 ```
@@ -180,8 +183,8 @@ CONTAINER ID   IMAGE          COMMAND                  CREATED          STATUS  
 525e4429fac6   ubuntu:16.04   "/bin/bash"              41 seconds ago   Exited (0) 40 seconds ago             loving_carson
 44d643f1fe59   ubuntu:16.04   "/bin/echo 'Welcome …"   3 minutes ago    Exited (0) 3 minutes ago              nostalgic_ellis
 
-The container exited instantly. Why? We were running the /bin/bash command, which is an interactive program. However, the docker run command doesn't run interactively by default, therefore the /bin/bash command exited, and the container stopped.
-
+The container exited instantly. Why? We were running the /bin/bash command, which is an interactive program. 
+However, the docker run command doesn't run interactively by default, therefore the /bin/bash command exited, and the container stopped.
 ```
 
 Instead, let's add the -it flags, which tells Docker to run the command interactively with your terminal.
@@ -285,7 +288,6 @@ Let's use `docker stop`, passing it the first few characters of the container n
 ```
 $ docker stop ab46
 ab46
-
 ```
 
 Then checking `docker ps -a`...
@@ -295,7 +297,6 @@ $ docker ps -a
 
 CONTAINER ID   IMAGE          COMMAND                  CREATED          STATUS                        PORTS     NAMES
 ab466725bc1c   ubuntu:16.04   "/bin/sleep 1200"        16 minutes ago   Exited (137) 23 seconds ago             vibrant_wilson
-
 $
 ```
 
@@ -311,7 +312,6 @@ $ docker ps -a
 
 CONTAINER ID   IMAGE          COMMAND                  CREATED          STATUS                        PORTS     NAMES
 ab466725bc1c   ubuntu:16.04   "/bin/sleep 1200"        16 minutes ago   Exited (137) 23 seconds ago             vibrant_wilson
-
 $
 ```
 
@@ -332,12 +332,9 @@ It can be tedious to remove old containers each time after you run them. To addr
 ```
 $ docker run --rm ubuntu:16.04 /bin/echo 'Welcome to Docker preparation day !!'
 Welcome to Docker preparation day !!
-
 $ docker ps -a
 CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
-
 $
-
 ```
 
 
