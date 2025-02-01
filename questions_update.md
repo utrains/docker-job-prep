@@ -43,7 +43,7 @@ And just like that, the world of software development changed forever. So, befor
 
 8. **What is the difference between `docker run` and `docker start`?**
 
-   - **Answer**: `docker run` is used to create and start a container, whereas `docker start` is used to restart an existing container.
+   - **Answer**: `docker run` is used to create and start a container, whereas `docker start` is used to start an existing container.
 
 9. **What is the purpose of `docker logs`?**
 
