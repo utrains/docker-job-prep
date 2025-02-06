@@ -176,9 +176,39 @@ And just like that, the world of software development changed forever. So, befor
 
     - **Answer**: Each instruction in a Dockerfile (e.g., RUN, COPY, ADD) creates a new layer in the Docker image. Layers are cached to speed up builds but can also increase the image size.
 
-40. **How do you push a Docker image to Docker Hub?**
+40. **How do you push a Docker image to a container registry?**
 
-    - **Answer**: To push an image to Docker Hub, first tag it with your Docker Hub repository (e.g., `docker tag myimage username/myimage`), then use the command `docker push username/myimage`.
+   **Answer**: To push an image to a container registry, first tag it with the appropriate repository name. Then, authenticate with the registry and use the `docker push` command. Here are examples for common registries:  
+
+   - **Docker Hub**:  
+   ```sh
+   docker tag myimage username/myimage  
+   docker push username/myimage 
+   ``` 
+
+   - **Amazon Elastic Container Registry (ECR)**:  
+   ```sh
+   aws ecr get-login-password --region region | docker login --username AWS --password-stdin <aws_account_id>.dkr.ecr.<region>.amazonaws.com  
+   docker tag myimage <aws_account_id>.dkr.ecr.<region>.amazonaws.com/myimage  
+   docker push <aws_account_id>.dkr.ecr.<region>.amazonaws.com/myimage  
+
+   ``` 
+
+   - **Google Container Registry (GCR)**:  
+   ```sh
+   gcloud auth configure-docker  
+   docker tag myimage gcr.io/<project-id>/myimage  
+   docker push gcr.io/<project-id>/myimage  
+ 
+   ``` 
+   - **Azure Container Registry (ACR)**:  
+   ```sh
+   az acr login --name <registry-name>  
+   docker tag myimage <registry-name>.azurecr.io/myimage  
+   docker push <registry-name>.azurecr.io/myimage  
+
+   ``` 
+
 
 41. **How do you expose ports in Docker?**
 

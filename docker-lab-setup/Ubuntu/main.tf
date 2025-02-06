@@ -1,6 +1,6 @@
 # Configure the AWS Provider
 provider "aws" {
-  region = "us-east-1"
+  region = "us-west-1"
 }
 
 # Create default VPC if one does not exist
@@ -57,7 +57,7 @@ resource "tls_private_key" "ec2_key" {
 }
 
 resource "aws_key_pair" "ec2_key" {
-  key_name   = "docker-keypair"
+  key_name   = "docker-keypair-estephe"
   public_key = tls_private_key.ec2_key.public_key_openssh
 }
 
@@ -81,16 +81,63 @@ data "aws_ami" "ubuntu" {
     values = ["x86_64"]
   }
 
-  owners = ["099720109477"] # Canonical's AWS account ID
+  owners = ["099720109477"]
 }
 
+# Create an IAM role
+resource "aws_iam_role" "ecr_access_role" {
+  name = "ecr-access-role"
+
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [{
+      Effect = "Allow"
+      Principal = {
+        Service = "ec2.amazonaws.com"
+      }
+      Action = "sts:AssumeRole"
+    }]
+  })
+}
+
+# Attach an ECR policy
+resource "aws_iam_policy" "ecr_policy" {
+  name        = "ECRAccessPolicy"
+  description = "Policy to allow access to ECR"
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Effect = "Allow"
+        Action = [
+          "ecr:*"
+        ]
+        Resource = "*"
+      }
+    ]
+  })
+}
+
+# Attach policy to the role 
+resource "aws_iam_role_policy_attachment" "ecr_policy_attachment" {
+  policy_arn = aws_iam_policy.ecr_policy.arn
+  role       = aws_iam_role.ecr_access_role.name
+}
+
+# Attach the Role to an EC2 Instance Profile
+resource "aws_iam_instance_profile" "ecr_instance_profile" {
+  name = "ecr-instance-profile"
+  role = aws_iam_role.ecr_access_role.name
+}
 
 # Create EC2 instance with Docker installation
 resource "aws_instance" "DockerDebian" {
   ami                    = data.aws_ami.ubuntu.id
-  instance_type          = "t2.micro"
+  instance_type          = "t2.medium"
   vpc_security_group_ids = [aws_security_group.web-sg.id]
-  key_name               = aws_key_pair.ec2_key.key_name    
+  key_name               = aws_key_pair.ec2_key.key_name 
+  iam_instance_profile   = aws_iam_instance_profile.ecr_instance_profile.name
   user_data              = file("install.sh")
 
   root_block_device {
